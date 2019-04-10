@@ -15,7 +15,7 @@ resource "aws_instance" "example" {
   instance_type          = "${var.instance_type}"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
 
-  key_name = "var.key_name"
+  key_name = "${var.key_name}"
 
   user_data = <<-EOF
         #!/bin/bash
