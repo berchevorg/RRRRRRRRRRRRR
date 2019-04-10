@@ -1,10 +1,16 @@
 
+variable "ami" {}
+variable "instance_type" {}
+variable "key_name" {}
+variable "aws_access_key" {}
+variable "aws_secret_key" {}
+
 resource "aws_instance" "example" {
-  ami                    = "ami-40d28157"
-  instance_type          = "t2.micro"
+  ami                    = "${var.ami}"
+  instance_type          = "${var.instance_type}"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
 
-  key_name = "vagrant_nomad_key"
+  key_name = "var.key_name"
 
   user_data = <<-EOF
         #!/bin/bash
